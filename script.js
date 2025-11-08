@@ -1,7 +1,20 @@
-<iframe 
-  src="https://www.google.com/maps/embed?pb=..." 
-  width="100%" height="250" 
-  style="border:0;" 
-  allowfullscreen="" 
-  loading="lazy">
-</iframe>
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute("href")).scrollIntoView({
+      behavior: "smooth"
+    });
+    document.querySelector("nav ul").classList.remove("show");
+  });
+});
+
+// Mobile Menu Toggle
+const toggle = document.createElement("div");
+toggle.classList.add("menu-toggle");
+toggle.innerHTML = "<span></span><span></span><span></span>";
+document.querySelector("header").appendChild(toggle);
+
+toggle.addEventListener("click", () => {
+  document.querySelector("nav ul").classList.toggle("show");
+});
